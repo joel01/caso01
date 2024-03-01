@@ -58,11 +58,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests().antMatchers("/authenticate", "/register").permitAll()
                 // Todas las demás solicitudes necesitan autenticación
                 .anyRequest().authenticated().and()
-                // Asegúrate de usar el filtro JWT antes del filtro estándar de autenticación de usuario
+                
                 .addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);
 
-        // Desactiva la creación de sesiones en el servidor
-        //httpSecurity.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        
     }
 }
 
